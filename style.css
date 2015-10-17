@@ -1,0 +1,55 @@
+/* Header */
+h1#header
+{
+	font-size: 20px;
+}
+/* End Header */
+
+/* Content */
+a {
+	text-decoration: none;
+}
+
+a#button-header
+{
+	font-size: 15px;
+}
+
+h1#title-content
+{
+	font-size: 19px;
+}
+
+h2#subtitle-content
+{
+	font-size: 17px;
+}
+
+i#default
+{
+	color: red;
+}
+
+#play
+{
+	background-color: green;
+}
+
+#stop
+{
+	background-color: red;
+}
+
+#summary
+{
+	display: none;
+}
+
+/* End Content */
+
+/* Footer */
+h1#footer
+{
+	font-size: 14px;
+}
+/* End Footer */
