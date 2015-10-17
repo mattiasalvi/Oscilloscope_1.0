@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Oscilloscope (v. 1.0)</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+	<script src="js/script.js"></script>
+</head>
+</head>
+<body>
+	<!-- Start "Index" -->
+	<div data-role="page" id="index" >
+		<!-- Header -->
+		<div data-role="header">
+			<h1 id="header">Oscilloscope 1.0</h1>
+		</div>
+		<!-- End Header -->
+		
+		<!-- Content -->
+		<div data-role="main" class="ui-content" align="center">
+			<div id="control-panel">
+				<table width="30%" cellpadding="5">
+					<!-- Start "Type" -->
+					<tr>
+						<td>
+							<label><b>Type</b></label>
+						</td>
+						<td>
+							<select name="type" id="type">
+								<option value="sine">Sine</option>
+								<option value="square">Square</option>
+								<option value="sawtooth">Sawtooth</option>
+								<option value="triangle">Triangle</option>
+							</select>
+						</td>
+					</tr>
+					<!-- End "Type" -->
+					
+					<!-- Start "Frequency" -->
+					<tr>
+						<td id="freq">
+							<label><b>Frequency (Hz)</b></label>
+						</td>
+						<td>
+							<input name="frequency" id="frequency" type="range" value="200" step="10" min="0" max="1000" />
+						</td>
+					</tr>
+					<!-- End "Frequency" -->
+					
+					<!-- Start "Detune" -->
+					<tr>
+						<td>
+							<label><b>Detune (cents)</b></label>
+							<!--
+								value: specifies the default value
+								step: specifies the legal number intervals.
+								max: specifies the maximum value allowed.
+								min: specifies the minimum value allowed.
+							-->
+						</td>
+						<td>
+							<input name="detune" id="detune" type="range" value="0" step="5" min="-100" max="100" />
+						</td>
+					</tr>
+					<!-- End "Detune" -->
+					
+					<!-- Start "Start after" -->
+					<tr>
+						<td>
+							<label><b>Start after (s)</b></label>
+						</td>
+						<td>
+							<input name="startAfter" id="startAfter" type="text" placeholder="0 s (Default)" />
+						</td>
+					</tr>
+					<!-- End "Start after" -->
+					<tr>
+						<td colspan="2">
+							<input type="submit" id="play" value="PLAY" onclick="writeSummary();"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<!-- Start "Summary" -->
+			<div id="summary">
+				<br />
+				<table width="30%" cellpadding="5" cellspacing="12" class="ui-responsive ui-shadow">
+					<tr>
+						<td><b>Type</b></td>
+						<td id="summaryType"></td>
+					<tr>
+					<tr>
+						<td><b>Frequency (Hz)</b></td>
+						<td id="summaryFrequency">
+						</td>
+					<tr>
+					<tr>
+						<td><b>Detune (cents)</b></td>
+						<td id="summaryDetune">
+						</td>
+					<tr>
+					<tr>
+						<td><b>Start after (s)</b></td>
+						<td id="summaryStartAfter"></td>
+					</tr>
+				</table>
+				<br />
+				<table width="30%">
+					<tr>
+						<td colspan="2">
+							<input type="submit" id="stop" value="STOP" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- End "Summary" -->
+			<br />
+			<p align="left">To see the documentation, click <a href="#documentation">here</a>.</p>
+		</div>
+		<!-- End Content -->
+		
+		<!-- Footer -->
+		<div data-role="footer">
+			<h1 id="footer">Oscilloscope 1.0 is a Web Audio experiment by <a href="http://www.mattiasalvi.org">Mattia Salvi</a>.</h1>
+		</div>
+		<!-- End Footer -->
+	</div>
+	<!-- End "Index" -->
+	
+	<!-- Start "Documentation (Introduction)" -->
+	<div data-role="page" id="documentation">
+		<!-- Header -->
+		<div data-role="header">
+			<h1 id="header">Documentation</h1>
+			<a id="button-header" href="#index" data-role="b" class="ui-btn-left" data-icon="back">Back</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" class="ui-btn-active ui-state-persist" data-icon="bullets">Introduction</a></li>
+					<li><a href="#keyboard" data-icon="grid">Keyboard Shortcuts</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- End Header -->
+		
+		<!-- Content -->
+		<div data-role="main" class="ui-content">
+			<h1 id="title-content" style="padding-bottom:10px">Introduction</h1>
+			<h2 id="subtitle-content">What's Web Audio API?</h2>
+			<p>The <b>Web Audio API</b> is a high-level <i>JavaScript Application Programming Interface</i> (API) that can be used for processing and synthesizing audio in web applications.<br />
+			The audio processing is actually handled by Assembly/C/C++ code within the browser, but the API allows us to control it with JavaScript.
+			<h2 id="subtitle-content">What's Oscilloscope 1.0?</h2>
+			<p><b>Oscilloscope 1.0</b> is a web application that will allow you to generate sounds with the Web Audio API in your browser.<br />
+			This is based on Web Audio API Oscillators which will attempt to cover what oscillators are, how to create them, changing waveforms, setting frequency, and layering multiple oscillators together to create rich.<br />
+			An <b>oscillator</b> is a circuit that produces a repetitive, oscillating signal.<br />
+			Along with audio filters and audio controllers, audio oscillators are one of the basic elements required for modern analog subtractive synthesizers.</p>
+			<ul style="line-height:22px">
+				<li><b>Type</b>: is the shape and form of the signal that we are going to create.</li>
+				<li><b>Frequency</b>: is the number of occurrences of a repeating event per unit time. <i>(Hz).</i></li>
+				<li><b>Detune</b>: it defines the standard frequency tuning. <i>(Hz).</i></li>
+				<li><b>Start after</b>: it indicates how many seconds later the sound must play</li>
+			</ul>
+		</div>
+		<!-- End Content -->
+
+		<!-- Footer -->
+		<div data-role="footer">
+			<h1 id="footer">Oscilloscope (v. 1.0) is a Web Audio experiment by <a href="#">Mattia Salvi</a>.</h1>
+		</div>
+		<!-- Footer -->
+	</div>
+	<!-- End "Documentation (Keyboard Shortcuts)" -->
+	
+	<!-- Start "Keyboard Shortcuts" -->
+	<div data-role="page" id="keyboard">
+		<!-- Start Header -->
+		<div data-role="header">
+			<h1 id="header">Documentation</h1>
+			<a id="button-header" href="#index" data-role="b" class="ui-btn-left" data-icon="back">Back</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#documentation" data-icon="bullets">Introduction</a></li>
+					<li><a href="#" class="ui-btn-active ui-state-persist" data-icon="grid">Keyboard Shortcuts</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- End Header -->
+		
+		<!-- Content -->
+		<div data-role="main" class="ui-content">
+			<h1 id="title-content" style="padding-bottom:10px">Keyboard Shortcuts</h1>
+			<h2 id="subtitle-content">Shortcut Key for Start & Stop</h2>
+			<ul>
+				<li>Press [<b>SPACE</b>] to start/stop the oscilloscope.</li>
+			</ul>
+			<h2 id="subtitle-content">Shortcut Keys for Type are S, Q, W and T</h2>
+			<ul>
+				<li>Press [<b>S</b>] to set the type to "Sine" <i id="default">(default)</i></li>
+				<li>Press [<b>Q</b>] to set the type to "Square"</li>
+				<li>Press [<b>W</b>] to set the type to "Sawtooth"</li>
+				<li>Press [<b>T</b>] to set the type to "Triangle"</li>
+			</ul>
+			<h2 id="subtitle-content">Shortcut Keys for Frequency are 1, 2, and 3</h2>
+			<ul>
+				<li>Press [<b>1</b>] to set the frequency to 200 <i id="default">(default)</i></li>
+				<li>Press [<b>2</b>] to set the frequency to 500</li>
+				<li>Press [<b>3</b>] to set the frequency to 800</li>
+			</ul>
+			<h2 id="subtitle-content">Shortcut Keys for Detune are 6, 7, and 8</h2>
+			<ul>
+				<li>Press [<b>4</b>] to set the detune to -30</li>
+				<li>Press [<b>5</b>] to set the detune to 0 <i id="default">(default)</i></li>
+				<li>Press [<b>6</b>] to set the detune to 50</li>
+			</ul>
+		</div>
+		<!-- End Content -->
+		
+		<!-- Footer -->
+		<div data-role="footer">
+			<h1 id="footer">Oscilloscope 1.0 is a Web Audio experiment by <a href="#">Mattia Salvi</a>.</h1>
+		</div>
+		<!-- End Footer -->
+	</div>
+	<!-- End "Tips & Tricks" -->
+	<script src="js/oscilloscope.js"></script>
+</body>
+</html>
