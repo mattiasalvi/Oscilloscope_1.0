@@ -10,7 +10,7 @@ The audio processing is actually handled by Assembly/C/C++ code within the brows
 
 ### What's Oscilloscope 1.0?
 <div style="font-size:15px">
-<b>Oscilloscope 1.0</b> is a web application that will allow you to generate sounds with the Web Audio API in your browser.<br />
+<b>Oscilloscope 1.0</b> is a web application that allow you to generate sounds with the Web Audio API in your browser.<br />
 This is based on Web Audio API Oscillators which will attempt to cover what oscillators are, how to create them, changing waveforms, setting frequency, and layering multiple oscillators together to create rich.<br />
 An <b>oscillator</b> is a circuit that produces a repetitive, oscillating signal.<br />
 Along with audio filters and audio controllers, audio oscillators are one of the basic elements required for modern analog subtractive synthesizers.
