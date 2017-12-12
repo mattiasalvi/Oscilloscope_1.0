@@ -8,9 +8,9 @@ The <b>Web Audio API</b> is a high-level JavaScript Application Programming Inte
 The audio processing is actually handled by Assembly/C/C++ code within the browser, but the API allows us to control it with JavaScript.
 </div>
 
-### What's Oscilloscope 1.0?
+### The project
 <div style="font-size:15px">
-<b>Oscilloscope 1.0</b> is a web application that allow you to generate sounds with the Web Audio API in your browser.<br />
+This is a web application that allow you to generate sounds with the Web Audio API in your browser.<br />
 This is based on Web Audio API Oscillators which will attempt to cover what oscillators are, how to create them, changing waveforms, setting frequency, and layering multiple oscillators together to create rich.<br />
 An <b>oscillator</b> is a circuit that produces a repetitive, oscillating signal.<br />
 Along with audio filters and audio controllers, audio oscillators are one of the basic elements required for modern analog subtractive synthesizers.
@@ -23,5 +23,5 @@ Along with audio filters and audio controllers, audio oscillators are one of the
 
 ### Credits
 <div style="font-size:15px; margin-bottom:20px;">
-<strong>Oscilloscope 1.0</strong> is a Web Audio experiment by <a href="http://www.mattiasalvi.org">Mattia Salvi</a>.
+<strong>oscilloscope-html5</strong> is a Web Audio experiment by Mattia Salvi.
 </div>
