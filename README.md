@@ -1,5 +1,5 @@
 <div style="text-align:center; width:400px; margin-top:20px; margin-bottom:20px;">
-  <h1>Oscilloscope 1.0</h1>
+  <h1>oscilloscope-html5</h1>
 </div>
 
 ### What's Web Audio API?
